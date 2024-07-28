@@ -8,6 +8,7 @@ import {
   InputAdornment,
   IconButton,
   CircularProgress,
+  Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
@@ -59,50 +60,61 @@ export default function Home() {
   };
 
   return (
-    <Card
-      sx={{
-        padding: "20px",
-      }}
-    >
-      <Stack spacing={5}>
-        <TextField
-          id="userName"
-          label="Username"
-          variant="outlined"
-          onChange={onUserNameChange}
-          value={username}
-        />
-        <TextField
-          id="password"
-          label="Password"
-          variant="outlined"
-          type={showPassword ? "text" : "password"}
-          onChange={onPasswordChange}
-          value={password}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                >
-                  {showPassword ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
+    <Stack spacing={2}>
+      <Typography
+        sx={{
+          fontWeight: "bold",
+          fontSize: "32px",
+        }}
+      >
+        Welcome admin
+      </Typography>
+      <Card
+        sx={{
+          padding: "20px",
+          width: "500px",
+        }}
+      >
+        <Stack spacing={5}>
+          <TextField
+            id="userName"
+            label="Username/email"
+            variant="outlined"
+            onChange={onUserNameChange}
+            value={username}
+          />
+          <TextField
+            id="password"
+            label="Password"
+            variant="outlined"
+            type={showPassword ? "text" : "password"}
+            onChange={onPasswordChange}
+            value={password}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
 
-        <Button
-          variant="contained"
-          disabled={isSubmitDisabled}
-          onClick={onSubmit}
-        >
-          Sign In
-        </Button>
-        {renderLoading()}
-      </Stack>
-    </Card>
+          <Button
+            variant="contained"
+            disabled={isSubmitDisabled}
+            onClick={onSubmit}
+          >
+            Sign In
+          </Button>
+          {renderLoading()}
+        </Stack>
+      </Card>
+    </Stack>
   );
 }

@@ -40,7 +40,6 @@ const addModeratedJoke = (
   payload,
   resetInputFields,
   isLoading,
-  onCompleteAction,
   onDeleteJoke,
 ) => {
   isLoading(true);
@@ -53,7 +52,6 @@ const addModeratedJoke = (
     .then(() => {
       onDeleteJoke();
       resetInputFields();
-      onCompleteAction();
     })
     .catch((error) => {
       console.log(error);

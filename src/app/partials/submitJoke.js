@@ -23,22 +23,37 @@ export default function SubmitJoke({
   jokeData = DEFAULT_JOKE_OBJ,
   onCompleteAction = () => {},
 }) {
-  const [jokeTypeId, setJokeTypeId] = useState(jokeData.jokeTypeId);
-  const [isCustomJoke, setIsCustomJoke] = useState(jokeData.isCustomJoke);
+  const [jokeTypeId, setJokeTypeId] = useState(DEFAULT_JOKE_OBJ.jokeTypeId);
+  const [isCustomJoke, setIsCustomJoke] = useState(
+    DEFAULT_JOKE_OBJ.isCustomJoke,
+  );
 
-  const [joke, setJoke] = useState(jokeData.joke);
-  const [jokeDelivery, setJokeDelivery] = useState(jokeData.jokeDelivery);
+  const [joke, setJoke] = useState(DEFAULT_JOKE_OBJ.joke);
+  const [jokeDelivery, setJokeDelivery] = useState(
+    DEFAULT_JOKE_OBJ.jokeDelivery,
+  );
   const [isSubmitDisabled, setSubmitDisabled] = useState(true);
 
   const [jokeTypes, setJokeTypes] = useState([]);
   const [isJokeTypesLoading, setIsJokeTypesLoading] = useState(false);
 
-  const [customJokeType, setCustomJokeType] = useState(jokeData.customJokeType);
+  const [customJokeType, setCustomJokeType] = useState(
+    DEFAULT_JOKE_OBJ.customJokeType,
+  );
   const [isExistingJokeType, setIsExistingJokeType] = useState(false);
 
   const [textFieldsDisabled, setTextFieldsDisabled] = useState(true);
 
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    console.log(jokeData);
+    setJokeTypeId(jokeData.jokeTypeId);
+    setIsCustomJoke(jokeData.isCustomJoke);
+    setJoke(jokeData.joke);
+    setJokeDelivery(jokeData.jokeDelivery);
+    setCustomJokeType(jokeData.customJokeType);
+  }, [JSON.stringify(jokeData)]);
 
   useEffect(() => {
     fetchJokeTypes(setJokeTypes, setIsJokeTypesLoading);
@@ -154,7 +169,6 @@ export default function SubmitJoke({
       },
       resetInputFields,
       setIsLoading,
-      onCompleteAction,
       onDeleteJoke,
     );
   };

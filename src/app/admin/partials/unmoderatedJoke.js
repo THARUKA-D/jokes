@@ -18,6 +18,7 @@ export default function UnmoderatedJoke() {
   }, []);
 
   const onGetJoke = () => {
+    setJokeData([]);
     fetchUnmoderatedJoke(setIsJokeLoading, setJokeData);
   };
 
