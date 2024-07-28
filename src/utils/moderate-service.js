@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAuthToken } from "./until";
+import { getAuthToken } from "./util";
 
 const signIn = (payload, isLoading, navigateTo) => {
   isLoading(true);
