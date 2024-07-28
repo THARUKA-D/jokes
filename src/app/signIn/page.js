@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   Card,
@@ -8,17 +8,17 @@ import {
   InputAdornment,
   IconButton,
   CircularProgress,
-} from '@mui/material';
-import { useEffect, useState } from 'react';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { useRouter } from 'next/navigation'
-import { signIn } from '@/utils/moderate-service';
+} from "@mui/material";
+import { useEffect, useState } from "react";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useRouter } from "next/navigation";
+import { signIn } from "@/utils/moderate-service";
 
 export default function Home() {
   const router = useRouter();
 
-  const [username, setUserName] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitDisabled, setSubmitDisabled] = useState(true);
   const [isSigningIn, setIsSigningIn] = useState(false);
@@ -26,48 +26,42 @@ export default function Home() {
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
-  const onUserNameChange = event => {
+  const onUserNameChange = (event) => {
     const value = event.target.value;
     setUserName(value);
   };
 
-  const onPasswordChange = event => {
+  const onPasswordChange = (event) => {
     const value = event.target.value;
     setPassword(value);
   };
 
   useEffect(() => {
-    if (
-      username.length
-      && password.length
-    ) {
+    if (username.length && password.length) {
       setSubmitDisabled(false);
       return;
     }
     setSubmitDisabled(true);
-  }, [
-    username,
-    password,
-  ])
+  }, [username, password]);
 
   const navigateTo = () => {
-    router.push("admin")
-  }
+    router.push("admin");
+  };
   const onSubmit = () => {
-    signIn({ username, password }, setIsSigningIn, navigateTo)
+    signIn({ username, password }, setIsSigningIn, navigateTo);
   };
 
   const renderLoading = () => {
     if (isSigningIn) {
-      return <CircularProgress />
+      return <CircularProgress />;
     }
     return null;
-  }
+  };
 
   return (
     <Card
       sx={{
-        padding: "20px"
+        padding: "20px",
       }}
     >
       <Stack spacing={5}>
@@ -80,7 +74,7 @@ export default function Home() {
         />
         <TextField
           id="password"
-          label='Password'
+          label="Password"
           variant="outlined"
           type={showPassword ? "text" : "password"}
           onChange={onPasswordChange}
@@ -96,7 +90,7 @@ export default function Home() {
                   {showPassword ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
               </InputAdornment>
-            )
+            ),
           }}
         />
 

@@ -1,0 +1,9 @@
+.prettierignore
+**/*.html
+
+next.config.mjs
+.eslintrc.json
+package-lock.json
+README.md
+.prettierrc.json
+package.json

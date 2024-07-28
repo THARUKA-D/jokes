@@ -5,5 +5,5 @@ export const DEFAULT_JOKE_OBJ = {
   jokeTypeId: null,
   customJokeType: "",
   joke: "",
-  jokeDelivery: ""
+  jokeDelivery: "",
 };

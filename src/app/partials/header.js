@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { Divider, Stack, Button } from '@mui/material';
-import { useRouter } from 'next/navigation'
+import { Divider, Stack, Button } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const router = useRouter();
@@ -16,12 +16,14 @@ export default function Header() {
       >
         <Button
           variant={"contained"}
-          onClick={() => {router.push('/signIn') }}
+          onClick={() => {
+            router.push("/signIn");
+          }}
         >
           Sign In
         </Button>
       </Stack>
-      <Divider sx={{marginTop: "10px", marginBottom: "10px"}}/>
+      <Divider sx={{ marginTop: "10px", marginBottom: "10px" }} />
     </>
-  )
+  );
 }
